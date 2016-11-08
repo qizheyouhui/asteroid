@@ -16,14 +16,19 @@ export function onLogout () {
         .then(() => null);
 }
 
-export function resumeLogin () {
-    return multiStorage.get(this.endpoint + "__login_token__")
+export function resumeLogin (token) {
+    let tokenPromise;
+    if (token) {
+      tokenPromise = Promise.resolve({resume: token});
+    } else {
+      tokenPromise = multiStorage.get(this.endpoint + "__login_token__")
         .then(resume => {
             if (!resume) {
                 throw new Error("No login token");
             }
             return {resume};
-        })
-        .then(this.login.bind(this))
+        });
+    }
+    return tokenPromise.then(this.login.bind(this))
         .catch(onLogout.bind(this));
 }

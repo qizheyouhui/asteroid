@@ -22,8 +22,8 @@ export function logout () {
 *   Init method
 */
 
-export function init () {
+export function init (options) {
     this.userId = null;
     this.loggedIn = false;
-    this.ddp.on("connected", resumeLogin.bind(this));
+    this.ddp.on("connected", resumeLogin.bind(this, options.token));
 }
