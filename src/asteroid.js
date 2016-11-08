@@ -7,6 +7,8 @@ import * as methods from "./base-mixins/methods";
 import * as loginWithPassword from "./base-mixins/password-login";
 import * as subscriptions from "./base-mixins/subscriptions";
 
+import * as multiStorage from "./common/multi-storage";
+
 /*
 *   A mixin is a plain javascript object. Mixins are composed by merging the
 *   mixin object own enumerable properties into the Asteroid's base prototype.
@@ -45,3 +47,5 @@ export function createClass (customMixins = []) {
     return Asteroid;
 
 }
+
+export { multiStorage };
