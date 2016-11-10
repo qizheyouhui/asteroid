@@ -36,6 +36,7 @@ export function init (options) {
         reconnectInterval
     } = options;
     this.endpoint = endpoint;
+    this.storeToken = options.storeToken;
     const ddpOptions = {
         endpoint,
         SocketConstructor,
