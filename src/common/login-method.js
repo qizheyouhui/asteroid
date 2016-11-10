@@ -11,7 +11,7 @@ export function onLogin ({id, token}) {
       promise = Promise.resolve();
     }
     return promise.then(this.emit.bind(this, "loggedIn", id))
-        .then(() => id);
+        .then(() => ({id, token}));
 }
 
 export function onLogout () {
